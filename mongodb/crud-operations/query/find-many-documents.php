@@ -7,3 +7,11 @@
  */
 
 require_once "../../../vendor/autoload.php";
+
+$collection = (new MongoDB\Client)->demo->zips;
+
+$cursor = $collection->find(['city' => 'JERSEY CITY', 'state' => 'NJ']);
+
+foreach ($cursor as $document) {
+  echo $document['_id'], "\n";
+}
